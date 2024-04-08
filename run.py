@@ -1,11 +1,11 @@
 import os
 from taskmanager import app, db
 
-
 if __name__ == "__main__":
-    with app.app_context():
-        # Create all tables
+    with app.app_context().push():
+        # Perform operations that require access to the Flask application context
         db.create_all()
+
     app.run(
         host=os.environ.get("IP"),
         port=int(os.environ.get("PORT")),
